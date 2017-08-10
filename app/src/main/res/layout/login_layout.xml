@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="vertical"
+                android:weightSum="1"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="81dp">
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="19dp"
+            android:text="@string/app_name"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="@string/loginTxt"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/loginTextInput"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"/>
+
+        <EditText
+            android:id="@+id/loginTextInput"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:background="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="@+id/textView2"
+            app:layout_constraintRight_toRightOf="@+id/textView2"
+            tools:ignore="MissingConstraints"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginTextInput"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:text="@string/passwordTxt"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/passwordTextInput"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="@+id/loginTextInput"
+            app:layout_constraintRight_toRightOf="@+id/loginTextInput"/>
+
+        <EditText
+            android:id="@+id/passwordTextInput"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@+id/loginTextInput"
+            android:layout_alignStart="@+id/loginTextInput"
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="12dp"
+            android:background="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="@+id/textView3"
+            app:layout_constraintRight_toRightOf="@+id/textView3"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="213dp"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/passwordTextInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:background="@android:color/holo_red_light"
+        android:text="@string/btLogin"
+        android:textColor="@color/cardview_light_background"
+        android:textStyle="bold"
+        android:onClick="btLogin"/>
+
+</RelativeLayout>

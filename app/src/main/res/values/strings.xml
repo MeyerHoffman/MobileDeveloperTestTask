@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Каталог недвижимости</string>
+    <string name="loginTxt">Логин:</string>
+    <string name="passwordTxt">Пароль:</string>
+    <string name="btLogin">Войти</string>
+    <string name="txtIncorrectLogin">Не верный логин или пароль!</string>
+    <string name="successCreateNewUser">Новый пользователь успешно создан</string>
+    <string name="failCreateNewUser">Внимание! Не удалось создать нового пользователя. Поля логин и пароль не могут быть пустыми!</string>
+    <string name="errorInputAdress">Внимание! Не заполнено поле Адресс</string>
+    <string name="errorInputArea">Внимание! Не заполнено поле Площадь</string>
+    <string name="errorInputPrice">Внимание! Не заполнено поле Цена</string>
+    <string name="errorInputNumberOFRooms">Внимание! Не заполнено поле Число комнат</string>
+    <string name="errorInputFloor">Внимание! Не заполнено поле Этаж</string>
+
+    <string name="uiTxtAddress">Адрес: </string>
+    <string name="uiTxtArea">Площадь: </string>
+    <string name="uiTxtPrice">Цена: </string>
+    <string name="emptyTxt">...</string>
+
+    <string name="btTxtLogout">Logout</string>
+    <string name="btTxtInformation">i</string>
+    <string name="uiNumberOfRooms">Количество комнат</string>
+    <string name="uiPricePerSquareMeter">Цена за квадратный метр</string>
+    <string name="uiFloor">Этаж</string>
+</resources>
