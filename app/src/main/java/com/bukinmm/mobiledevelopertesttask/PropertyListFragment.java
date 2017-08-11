@@ -4,6 +4,7 @@ package com.bukinmm.mobiledevelopertesttask;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,6 +22,11 @@ public class PropertyListFragment extends Fragment{
     private PropertyAdapter mAdapter;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         View view = inflater.inflate(R.layout.main_layout, container, false);
@@ -34,11 +40,29 @@ public class PropertyListFragment extends Fragment{
         return view;
     }
 
+    private void updateInformation(){
+        PropertyDepot propertyDepot = PropertyDepot.get(getActivity());
+
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+
+        // TODO: метод не дописан
+    }
+
     private void  updateUI(){
         PropertyDepot propertyDepot = PropertyDepot.get(getActivity());
         List<Property> properties = propertyDepot.getProperties();
-        mAdapter = new PropertyAdapter(properties);
-        mPropertRecyclerView.setAdapter(mAdapter);
+
+
+        if(mAdapter == null){
+            mAdapter = new PropertyAdapter(properties);
+            mPropertRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.setProperties(properties);
+            mAdapter.notifyDataSetChanged();
+        }
+
+        // TODO: необходимо добавить метод обновления интерфейса
     }
 
     private class PropertyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -101,6 +125,10 @@ public class PropertyListFragment extends Fragment{
         @Override
         public int getItemCount(){
             return  mProperties.size();
+        }
+
+        public void setProperties(List<Property> properties){
+            mProperties = properties;
         }
     }
 

@@ -21,13 +21,15 @@
             android:layout_gravity="right"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
+            android:clickable="true"
+
             android:text="@string/btTxtLogout"
             android:textAllCaps="false"
             android:textColor="@color/cardview_light_background"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:onClick="btLogout"
-            tools:ignore="RtlHardcoded"/>
+            tools:ignore="RtlHardcoded"
+            android:onClick="btLogout"/>
 
         <Button
             android:id="@+id/btAddObject"

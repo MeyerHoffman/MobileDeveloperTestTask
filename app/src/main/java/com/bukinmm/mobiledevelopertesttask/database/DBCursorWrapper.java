@@ -39,8 +39,7 @@ public class DBCursorWrapper extends CursorWrapper{
         int floorInt                = getInt(getColumnIndex(DBSchema.PropertiesTable.Cols.FLOOR));
 
         // TODO: удалить строку если не нужна
-        //Property property = new Property(UUID.fromString(uuidString));
-        Property property = new Property();
+        Property property = new Property(UUID.fromString(uuidString));
         property.setAddress(addressString);
         property.setArea(areaFloat);
         property.setPrice(priceFloat);

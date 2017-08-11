@@ -14,13 +14,13 @@ public class Property {
     private int mFloor = 0;
 
     public Property(){
-//        this(UUID.randomUUID());
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+//        mId = UUID.randomUUID();
     }
 
-//    public Property(UUID id){
-//        mId = id;
-//    }
+    public Property(UUID id){
+        mId = id;
+    }
 
 
     // SETTERS. START

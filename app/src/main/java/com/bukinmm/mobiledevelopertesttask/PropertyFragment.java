@@ -40,10 +40,15 @@ public class PropertyFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-
         UUID propertyId = (UUID)getArguments().getSerializable(ARG_PROPERTY_ID);
         mProperty = PropertyDepot.get(getActivity()).getProperty(propertyId);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+
+        PropertyDepot.get(getActivity()).updateProperty(mProperty);
     }
 
     @Override
