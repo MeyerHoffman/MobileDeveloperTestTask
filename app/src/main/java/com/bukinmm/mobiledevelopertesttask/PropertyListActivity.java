@@ -25,6 +25,13 @@ public class PropertyListActivity extends SingleFragmentActivity{
         toast.show();
     }
 
+    public void btAddNew(View view){
+        Toast toast = Toast.makeText(getApplicationContext(),
+                "Вызов функции создания новой учетной записи", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+
     // HANDLERS. END
 
 }

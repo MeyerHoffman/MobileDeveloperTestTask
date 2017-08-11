@@ -29,6 +29,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:visibility="visible"
+            android:onClick="btEdit"
             tools:ignore="RtlHardcoded"/>
 
         <Button
@@ -43,7 +44,8 @@
             android:textColor="@color/cardview_light_background"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:visibility="visible"
+            android:visibility="invisible"
+            android:onClick="btSave"
             tools:ignore="RtlHardcoded"/>
 
     </android.support.v7.widget.Toolbar>

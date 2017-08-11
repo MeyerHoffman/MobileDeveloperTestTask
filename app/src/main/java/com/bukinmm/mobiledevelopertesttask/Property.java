@@ -42,7 +42,7 @@ public class Property {
     }
     private void setPricePerMeter(){
         if(mArea > 0){
-            mPricePerMeter = mPrise / mArea;
+            mPricePerMeter = Math.round(mPrise / mArea);
         } else {
             mPricePerMeter = 0.0f;
         }
@@ -71,7 +71,7 @@ public class Property {
     }
     public float getPricePerMeter(){
         if(mArea > 0){
-            return (mPricePerMeter = mPrise / mArea);
+            return (mPricePerMeter = Math.round(mPrise / mArea));
         } else {
             return 0.0f;
         }

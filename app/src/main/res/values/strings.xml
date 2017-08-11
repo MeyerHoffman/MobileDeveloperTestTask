@@ -22,4 +22,7 @@
     <string name="uiNumberOfRooms">Количество комнат</string>
     <string name="uiPricePerSquareMeter">Цена за квадратный метр</string>
     <string name="uiFloor">Этаж</string>
+
+    <string name="dimensionSquarelMeter">м2</string>
+    <string name="dimensionThousandRub">тыс.руб.</string>
 </resources>
