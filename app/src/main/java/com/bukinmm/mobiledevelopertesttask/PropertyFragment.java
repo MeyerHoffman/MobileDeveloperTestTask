@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,9 @@ public class PropertyFragment extends Fragment {
     private TextView mNumberOfRooms;
     private TextView mPricePerSquarelMeter;
     private TextView mFloor;
+
+    private Button mBtEdit;
+    private Button mBtSave;
 
 
     private static final String ARG_PROPERTY_ID = "property_id";
@@ -56,6 +60,25 @@ public class PropertyFragment extends Fragment {
                           Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_property, container, false);
 
+
+
+        mBtEdit = (Button)view.findViewById(R.id.btEdit);
+        mBtSave = (Button)view.findViewById(R.id.btSave);
+
+        mBtEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickbtEdit(view);
+            }
+        });
+
+        mBtSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickbtSave(view);
+            }
+        });
+
         mAddress = (TextView)view.findViewById(R.id.txtAddress);
         mArea = (TextView)view.findViewById(R.id.txtArea);
         mPrice = (TextView)view.findViewById(R.id.txtPrice);
@@ -73,6 +96,28 @@ public class PropertyFragment extends Fragment {
 
         return view;
     }
+
+    // HANDLERS. START
+    // TODO: удалить вызов сообщения в методах
+    public void onClickbtEdit(View view){
+        Toast toast = Toast.makeText(getContext(),
+                "Вызов функции редактирования", Toast.LENGTH_SHORT);
+        toast.show();
+
+        mBtEdit.setVisibility(view.INVISIBLE);
+        mBtSave.setVisibility(view.VISIBLE);
+    }
+
+    public void onClickbtSave(View view){
+        Toast toast = Toast.makeText(getContext(),
+                "Вызов функции сохранения", Toast.LENGTH_SHORT);
+        toast.show();
+
+        mBtEdit.setVisibility(view.VISIBLE);
+        mBtSave.setVisibility(view.INVISIBLE);
+    }
+
+    // HANDLERS. END
 
 
 

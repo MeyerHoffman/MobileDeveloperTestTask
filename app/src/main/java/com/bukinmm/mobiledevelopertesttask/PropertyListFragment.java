@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,15 +23,46 @@ public class PropertyListFragment extends Fragment{
     private RecyclerView mPropertRecyclerView;
     private PropertyAdapter mAdapter;
 
+    private Button mBtLogout;
+    private Button mBtInfo;
+    private Button mBtAddNew;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         View view = inflater.inflate(R.layout.main_layout, container, false);
+
+        mBtLogout = (Button)view.findViewById(R.id.btLogout);
+        mBtAddNew = (Button)view.findViewById(R.id.btAddObject);
+        mBtInfo = (Button)view.findViewById(R.id.btInfo);
+
+        mBtLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btLogout(view);
+            }
+        });
+
+        mBtAddNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btAddNew(view);
+            }
+        });
+
+        mBtInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btGetInfo(view);
+            }
+        });
 
         mPropertRecyclerView = (RecyclerView)view.findViewById(R.id.property_recycler_view);
         mPropertRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -39,6 +72,7 @@ public class PropertyListFragment extends Fragment{
 
         return view;
     }
+
 
     private void updateInformation(){
         PropertyDepot propertyDepot = PropertyDepot.get(getActivity());
@@ -131,5 +165,27 @@ public class PropertyListFragment extends Fragment{
             mProperties = properties;
         }
     }
+
+    // HANDLERS. START
+    // TODO: удалить вызов сообщения в методах
+    public void btGetInfo(View view){
+        Toast toast = Toast.makeText(getContext(),
+                "Вызов справки", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void btLogout(View view){
+        Toast toast = Toast.makeText(getContext(),
+                "Выход из учетной записи", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void btAddNew(View view){
+        Toast toast = Toast.makeText(getContext(),
+                "Вызов функции создания новой учетной записи", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    // HANDLERS. END
 
 }

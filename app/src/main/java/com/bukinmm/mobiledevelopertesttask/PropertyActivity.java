@@ -38,30 +38,4 @@ public class PropertyActivity extends SingleFragmentActivity{
         return PropertyFragment.newInstanse(propertyId);
     }
 
-    // HANDLERS. START
-    public void btEdit(View view){
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "Вызов функции редактирования", Toast.LENGTH_LONG);
-        toast.show();
-
-        mBtEdit = (Button) view.findViewById(R.id.btEdit);
-        mBtEdit.setVisibility(view.INVISIBLE);
-
-//        mBtSave = (Button) view.findViewById(R.id.btSave);
-//        mBtSave.setVisibility(view.VISIBLE);
-    }
-
-    public void btSave(View view){
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "Вызов функции сохранения", Toast.LENGTH_LONG);
-        toast.show();
-
-//        mBtEdit = (Button) view.findViewById(R.id.btEdit);
-//        mBtEdit.setVisibility(view.VISIBLE);
-//
-//        mBtSave = (Button) view.findViewById(R.id.btSave);
-//        mBtSave.setVisibility(view.INVISIBLE);
-    }
-
-    // HANDLERS. END
 }

@@ -22,14 +22,12 @@
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
             android:clickable="true"
-
             android:text="@string/btTxtLogout"
             android:textAllCaps="false"
             android:textColor="@color/cardview_light_background"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="RtlHardcoded"
-            android:onClick="btLogout"/>
+            tools:ignore="RtlHardcoded"/>
 
         <Button
             android:id="@+id/btAddObject"
@@ -43,7 +41,6 @@
             android:textAllCaps="false"
             android:textColor="@color/cardview_light_background"
             android:textSize="30sp"
-            android:onClick="btAddNew"
             tools:ignore="RtlHardcoded"/>
 
 
@@ -53,7 +50,6 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@color/colorAccent"
-            android:onClick="btGetInfo"
             android:text="@string/btTxtInformation"
             android:textAllCaps="false"
             android:textColor="@color/cardview_light_background"
