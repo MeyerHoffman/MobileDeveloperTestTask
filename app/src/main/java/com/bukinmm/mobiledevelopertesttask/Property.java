@@ -54,7 +54,6 @@ public class Property {
 
     // GETTERS. START
     public UUID getId(){
-
         return mId;
     }
     public String getAddress(){

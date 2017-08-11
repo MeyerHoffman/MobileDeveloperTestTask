@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +74,7 @@ public class PropertyListFragment extends Fragment{
 
 
     private void updateInformation(){
-        PropertyDepot propertyDepot = PropertyDepot.get(getActivity());
+        PropertyStorage propertyStorage = PropertyStorage.get(getActivity());
 
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
@@ -84,8 +83,8 @@ public class PropertyListFragment extends Fragment{
     }
 
     private void  updateUI(){
-        PropertyDepot propertyDepot = PropertyDepot.get(getActivity());
-        List<Property> properties = propertyDepot.getProperties();
+        PropertyStorage propertyStorage = PropertyStorage.get(getActivity());
+        List<Property> properties = propertyStorage.getProperties();
 
 
         if(mAdapter == null){
@@ -178,6 +177,11 @@ public class PropertyListFragment extends Fragment{
         Toast toast = Toast.makeText(getContext(),
                 "Выход из учетной записи", Toast.LENGTH_SHORT);
         toast.show();
+
+        // Start next activity
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     public void btAddNew(View view){

@@ -10,9 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bukinmm.mobiledevelopertesttask.Property;
-import com.bukinmm.mobiledevelopertesttask.R;
-
 import java.util.UUID;
 
 public class PropertyFragment extends Fragment {
@@ -45,14 +42,14 @@ public class PropertyFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         UUID propertyId = (UUID)getArguments().getSerializable(ARG_PROPERTY_ID);
-        mProperty = PropertyDepot.get(getActivity()).getProperty(propertyId);
+        mProperty = PropertyStorage.get(getActivity()).getProperty(propertyId);
     }
 
     @Override
     public void onPause(){
         super.onPause();
 
-        PropertyDepot.get(getActivity()).updateProperty(mProperty);
+        PropertyStorage.get(getActivity()).updateProperty(mProperty);
     }
 
     @Override

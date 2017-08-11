@@ -3,11 +3,12 @@ package com.bukinmm.mobiledevelopertesttask;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.bukinmm.mobiledevelopertesttask.database.DBCreateProperty;
-import com.bukinmm.mobiledevelopertesttask.database.DBCreateUser;
+
+import com.bukinmm.mobiledevelopertesttask.database.UserStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class MainActivity extends Activity{
         // Start next activity
         Intent intent = new Intent(this, PropertyListActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void CreateDefaultData(){
@@ -40,20 +42,26 @@ public class MainActivity extends Activity{
     }
 
     private void CreateDefaultUser(){
-        final String USER_NAME = "Юрий";
-        final String USER_PASSWORD = "123456";
-        DBCreateUser createUser = new DBCreateUser(getApplicationContext(), USER_NAME, USER_PASSWORD);
 
-        Toast toast = Toast.makeText(getApplicationContext(),
-                createUser.resultCreateUserMsg, Toast.LENGTH_SHORT);
-        toast.show();
+        int userCount = UserStorage.get(getApplicationContext()).getUsers().size();
+
+        if(userCount == 0){
+            final String USER_NAME = "Юрий";
+            final String USER_PASSWORD = "123456";
+
+            User defUser = new User();
+            defUser.setName(USER_NAME);
+            defUser.setPassword(USER_PASSWORD);
+
+            UserStorage.get(getApplicationContext()).addUser(defUser);
+        }
     }
 
     private void CreateDafaultRecords(){
 
-        int propCount = PropertyDepot.get(getApplicationContext()).getProperties().size();
+        int propCount = PropertyStorage.get(getApplicationContext()).getProperties().size();
 
-        if(PropertyDepot.get(getApplicationContext()).getProperties().size() == 0){
+        if(propCount == 0){
             final int NUMBER_DEFAULT_RECORDS = 3;
             List<Property> defProperties = new ArrayList<>();
 
@@ -111,17 +119,11 @@ public class MainActivity extends Activity{
             propertDef_3.setNumberOfRooms(NUMBER_OF_ROOMS_3);
             propertDef_3.setFloor(FLOOR_3);
 
-            defProperties.add(propertDef_1);
+            defProperties.add(propertDef_3);
             // RECORD 3. END
 
             for (Property currProp : defProperties) {
-                DBCreateProperty createProperty = new DBCreateProperty(getApplicationContext(),
-                        currProp.getAddress(), currProp.getArea(), currProp.getPrice(),
-                        currProp.getNumberOfRooms(), currProp.getFloor());
-            }
-
-            for (Property currProp : defProperties) {
-                PropertyDepot.get(getApplicationContext()).addProperties(currProp);
+                PropertyStorage.get(getApplicationContext()).addProperties(currProp);
             }
         }
 
