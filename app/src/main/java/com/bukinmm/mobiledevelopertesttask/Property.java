@@ -15,7 +15,6 @@ public class Property {
 
     public Property(){
         this(UUID.randomUUID());
-//        mId = UUID.randomUUID();
     }
 
     public Property(UUID id){

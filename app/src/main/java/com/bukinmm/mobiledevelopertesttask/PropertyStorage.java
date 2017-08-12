@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.bukinmm.mobiledevelopertesttask.database.DBCursorWrapper;
 import com.bukinmm.mobiledevelopertesttask.database.DBHelper;
@@ -43,9 +44,10 @@ public class PropertyStorage {
         String uuidString = property.getId().toString();
         ContentValues values = getContentValues(property);
 
-        mDatabase.update(DBSchema.PropertiesTable.NAME, values,
-                DBSchema.PropertiesTable.Cols.UUID +
-                        " = ?", new String[] { uuidString });
+            mDatabase.update(DBSchema.PropertiesTable.NAME,
+                    values,
+                    DBSchema.PropertiesTable.Cols.UUID + " = ?",
+                    new String[] { uuidString });
     }
 
     public List<Property> getProperties(){

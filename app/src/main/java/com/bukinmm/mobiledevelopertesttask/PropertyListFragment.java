@@ -31,7 +31,6 @@ public class PropertyListFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
 
     @Override
@@ -81,10 +80,10 @@ public class PropertyListFragment extends Fragment{
 
 
     private void updateInformation(){
-        PropertyStorage propertyStorage = PropertyStorage.get(getActivity());
-
-
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
+//        PropertyStorage propertyStorage = PropertyStorage.get(getActivity());
+//
+//
+//        AppCompatActivity activity = (AppCompatActivity) getActivity();
 
         // TODO: метод не дописан
     }
@@ -102,7 +101,7 @@ public class PropertyListFragment extends Fragment{
             mAdapter.notifyDataSetChanged();
         }
 
-        // TODO: необходимо добавить метод обновления интерфейса
+        updateInformation();
     }
 
     private class PropertyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

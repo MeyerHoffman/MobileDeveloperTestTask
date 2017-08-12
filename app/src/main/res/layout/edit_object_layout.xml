@@ -99,7 +99,7 @@
         tools:ignore="RtlHardcoded"/>
 
     <EditText
-        android:id="@+id/txNomberOfRoomInput"
+        android:id="@+id/txtNumberOfRoomsInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"

@@ -5,12 +5,14 @@
     <string name="btLogin">Войти</string>
     <string name="txtIncorrectLogin">Не верный логин или пароль!</string>
     <string name="successCreateNewUser">Новый пользователь успешно создан</string>
+
     <string name="failCreateNewUser">Внимание! Не удалось создать нового пользователя. Поля логин и пароль не могут быть пустыми!</string>
-    <string name="errorInputAdress">Внимание! поле Адресс не заполнено или заполнено не верно</string>
-    <string name="errorInputArea">Внимание! Поле Площадь не заполнено или заполнено не верно</string>
-    <string name="errorInputPrice">Внимание! Поле Цена не заполнено или заполнено не верно</string>
-    <string name="errorInputNumberOFRooms">Внимание! Поле Число комнат не заполнено или заполнено не верно</string>
-    <string name="errorInputFloor">Внимание! Поле Этаж не заполнено или заполнено не верно</string>
+
+    <string name="errorInputAdress">Внимание! поле "Адресс" не заполнено или заполнено не верно</string>
+    <string name="errorInputArea">Внимание! Поле "Площадь" не заполнено или заполнено не верно</string>
+    <string name="errorInputPrice">Внимание! Поле "Цена" не заполнено или заполнено не верно</string>
+    <string name="errorInputNumberOFRooms">Внимание! Поле "Число комнат" не заполнено или заполнено не верно</string>
+    <string name="errorInputFloor">Внимание! Поле "Этаж" не заполнено или заполнено не верно</string>
     <string name="warningMsgCreateNewProperty">Проверьте внесенную информацию</string>
     <string name="txtOk">Ок</string>
 
@@ -21,9 +23,9 @@
 
     <string name="btTxtLogout">Logout</string>
     <string name="btTxtInformation">i</string>
-    <string name="uiNumberOfRooms">Количество комнат</string>
-    <string name="uiPricePerSquareMeter">Цена за квадратный метр</string>
-    <string name="uiFloor">Этаж</string>
+    <string name="uiNumberOfRooms">Количество комнат: </string>
+    <string name="uiPricePerSquareMeter">Цена за квадратный метр: "</string>
+    <string name="uiFloor">Этаж: </string>
 
     <string name="dimensionSquarelMeter">м2</string>
     <string name="dimensionThousandRub">тыс.руб.</string>

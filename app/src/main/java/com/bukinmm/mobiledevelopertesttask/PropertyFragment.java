@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.UUID;
 
@@ -22,10 +21,9 @@ public class PropertyFragment extends Fragment {
     private TextView mNumberOfRooms;
     private TextView mPricePerSquarelMeter;
     private TextView mFloor;
+    private UUID mPropertyId;
 
     private Button mBtEdit;
-    private Button mBtSave;
-
 
     private static final String ARG_PROPERTY_ID = "property_id";
 
@@ -43,37 +41,40 @@ public class PropertyFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         UUID propertyId = (UUID)getArguments().getSerializable(ARG_PROPERTY_ID);
+        mPropertyId = propertyId;
         mProperty = PropertyStorage.get(getActivity()).getProperty(propertyId);
     }
 
     @Override
     public void onPause(){
         super.onPause();
-
+        mProperty = PropertyStorage.get(getActivity()).getProperty(mPropertyId);
         PropertyStorage.get(getActivity()).updateProperty(mProperty);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        mProperty = PropertyStorage.get(getActivity()).getProperty(mPropertyId);
+        PropertyStorage.get(getActivity()).updateProperty(mProperty);
+        SetText();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                           Bundle savedInstanceState){
+
+        mProperty = PropertyStorage.get(getActivity()).getProperty(mPropertyId);
+        PropertyStorage.get(getActivity()).updateProperty(mProperty);
+
         View view = inflater.inflate(R.layout.fragment_property, container, false);
 
-
-
         mBtEdit = (Button)view.findViewById(R.id.btEdit);
-        mBtSave = (Button)view.findViewById(R.id.btSave);
 
         mBtEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickbtEdit(view);
-            }
-        });
-
-        mBtSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickbtSave(view);
             }
         });
 
@@ -84,38 +85,27 @@ public class PropertyFragment extends Fragment {
         mPricePerSquarelMeter= (TextView)view.findViewById(R.id.txtPricePerSquareMeter);
         mFloor = (TextView)view.findViewById(R.id.txtFloor);
 
+        SetText();
+
+        return view;
+    }
+
+    private void SetText(){
         mAddress.setText(mProperty.getAddress());
         mArea.setText(Float.toString(mProperty.getArea()) + " " + this.getString(R.string.dimensionSquarelMeter));
         mPrice.setText(Float.toString(mProperty.getPrice()) + " " + this.getString(R.string.dimensionThousandRub));
         mNumberOfRooms.setText(Integer.toString(mProperty.getNumberOfRooms()));
         mPricePerSquarelMeter.setText(Float.toString(mProperty.getPricePerMeter()) + " " + this.getString(R.string.dimensionThousandRub));
         mFloor.setText(Integer.toString(mProperty.getFloor()));
-
-
-        return view;
     }
 
     // HANDLERS. START
-    // TODO: удалить вызов сообщения в методах
-    public void onClickbtEdit(View view){
-        Toast toast = Toast.makeText(getContext(),
-                "Вызов функции редактирования", Toast.LENGTH_SHORT);
-        toast.show();
 
-        mBtEdit.setVisibility(view.INVISIBLE);
-        mBtSave.setVisibility(view.VISIBLE);
+    public void onClickbtEdit(View view){
 
         Intent intent = new Intent(getContext(), EditObjectActivity.class);
+        intent.putExtra(ARG_PROPERTY_ID, mProperty.getId().toString());
         startActivity(intent);
-    }
-
-    public void onClickbtSave(View view){
-        Toast toast = Toast.makeText(getContext(),
-                "Вызов функции сохранения", Toast.LENGTH_SHORT);
-        toast.show();
-
-        mBtEdit.setVisibility(view.VISIBLE);
-        mBtSave.setVisibility(view.INVISIBLE);
     }
 
     // HANDLERS. END
