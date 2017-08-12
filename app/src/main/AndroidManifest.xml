@@ -21,6 +21,8 @@
         <!--<activity android:name=".MainActivity"></activity>-->
         <activity android:name=".PropertyActivity"></activity>
         <activity android:name=".PropertyListActivity"></activity>
+        <activity android:name=".EditObjectActivity"></activity>
+        <activity android:name=".AddNewActivity"></activity>
     </application>
 
 </manifest>

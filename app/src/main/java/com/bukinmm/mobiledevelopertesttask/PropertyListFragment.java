@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class PropertyListFragment extends Fragment{
@@ -72,6 +73,12 @@ public class PropertyListFragment extends Fragment{
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
 
     private void updateInformation(){
         PropertyStorage propertyStorage = PropertyStorage.get(getActivity());
@@ -116,10 +123,11 @@ public class PropertyListFragment extends Fragment{
         }
 
         public void bindProperty(Property property){
+
             mProperty = property;
             mAddress.setText(mProperty.getAddress());
-            mArea.setText(Float.toString(mProperty.getArea()));
-            mPrice.setText(Float.toString(mProperty.getPrice()));
+            mArea.setText(Float.toString(mProperty.getArea()) + " " + getString(R.string.dimensionSquarelMeter));
+            mPrice.setText(Float.toString(mProperty.getPrice()) + " " + getString(R.string.dimensionThousandRub));
 
         }
 
@@ -128,7 +136,6 @@ public class PropertyListFragment extends Fragment{
             Intent intent = PropertyActivity.newIntent(getActivity(), mProperty.getId());
 
             startActivity(intent);
-
         }
     }
 
@@ -188,6 +195,9 @@ public class PropertyListFragment extends Fragment{
         Toast toast = Toast.makeText(getContext(),
                 "Вызов функции создания новой учетной записи", Toast.LENGTH_LONG);
         toast.show();
+
+        Intent intent = new Intent(getActivity(), AddNewActivity.class);
+        startActivity(intent);
     }
 
     // HANDLERS. END

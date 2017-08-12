@@ -1,6 +1,7 @@
 package com.bukinmm.mobiledevelopertesttask;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -103,6 +104,9 @@ public class PropertyFragment extends Fragment {
 
         mBtEdit.setVisibility(view.INVISIBLE);
         mBtSave.setVisibility(view.VISIBLE);
+
+        Intent intent = new Intent(getContext(), EditObjectActivity.class);
+        startActivity(intent);
     }
 
     public void onClickbtSave(View view){

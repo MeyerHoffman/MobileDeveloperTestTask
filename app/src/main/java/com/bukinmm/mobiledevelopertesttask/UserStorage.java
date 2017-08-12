@@ -1,4 +1,4 @@
-package com.bukinmm.mobiledevelopertesttask.database;
+package com.bukinmm.mobiledevelopertesttask;
 
 
 import android.content.ContentValues;
@@ -6,8 +6,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.bukinmm.mobiledevelopertesttask.Property;
-import com.bukinmm.mobiledevelopertesttask.User;
+import com.bukinmm.mobiledevelopertesttask.database.DBCursorWrapper;
+import com.bukinmm.mobiledevelopertesttask.database.DBHelper;
+import com.bukinmm.mobiledevelopertesttask.database.DBSchema;
 
 import java.util.ArrayList;
 import java.util.List;

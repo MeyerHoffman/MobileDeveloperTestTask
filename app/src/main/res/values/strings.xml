@@ -6,11 +6,13 @@
     <string name="txtIncorrectLogin">Не верный логин или пароль!</string>
     <string name="successCreateNewUser">Новый пользователь успешно создан</string>
     <string name="failCreateNewUser">Внимание! Не удалось создать нового пользователя. Поля логин и пароль не могут быть пустыми!</string>
-    <string name="errorInputAdress">Внимание! Не заполнено поле Адресс</string>
-    <string name="errorInputArea">Внимание! Не заполнено поле Площадь</string>
-    <string name="errorInputPrice">Внимание! Не заполнено поле Цена</string>
-    <string name="errorInputNumberOFRooms">Внимание! Не заполнено поле Число комнат</string>
-    <string name="errorInputFloor">Внимание! Не заполнено поле Этаж</string>
+    <string name="errorInputAdress">Внимание! поле Адресс не заполнено или заполнено не верно</string>
+    <string name="errorInputArea">Внимание! Поле Площадь не заполнено или заполнено не верно</string>
+    <string name="errorInputPrice">Внимание! Поле Цена не заполнено или заполнено не верно</string>
+    <string name="errorInputNumberOFRooms">Внимание! Поле Число комнат не заполнено или заполнено не верно</string>
+    <string name="errorInputFloor">Внимание! Поле Этаж не заполнено или заполнено не верно</string>
+    <string name="warningMsgCreateNewProperty">Проверьте внесенную информацию</string>
+    <string name="txtOk">Ок</string>
 
     <string name="uiTxtAddress">Адрес: </string>
     <string name="uiTxtArea">Площадь: </string>
@@ -25,4 +27,9 @@
 
     <string name="dimensionSquarelMeter">м2</string>
     <string name="dimensionThousandRub">тыс.руб.</string>
+    <string name="uiTxtTitleEditObj">Редактирование</string>
+    <string name="txtZeroFloat">0.0</string>
+    <string name="txtZeroInt">0</string>
+    <string name="txtUiTitlaInDetail">Подробно</string>
+    <string name="uiTxtTitleAddNewObject">Создание Новой Записи</string>
 </resources>

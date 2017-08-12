@@ -3,9 +3,13 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
                 android:background="@android:drawable/editbox_background_normal"
-                android:orientation="vertical"
-                android:onClick="onClick">
+                android:onClick="onClick"
+                android:orientation="vertical">
 
     <TextView
         android:id="@+id/txtUIAddress"
@@ -28,6 +32,7 @@
         android:layout_below="@+id/txtUIAddress"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="@string/emptyTxt"
         android:textColor="@android:color/black"
         tools:ignore="RtlHardcoded"/>
