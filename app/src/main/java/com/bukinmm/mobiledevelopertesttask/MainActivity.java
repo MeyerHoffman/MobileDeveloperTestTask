@@ -3,8 +3,12 @@ package com.bukinmm.mobiledevelopertesttask;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 
 import java.util.ArrayList;
@@ -13,24 +17,89 @@ import java.util.List;
 
 public class MainActivity extends Activity{
 
+    private EditText mLoginInput;
+    private EditText mPasswordInput;
+    private Button mBtEntrance;
+
+    private SharedPreferences settingsUser;
+    private final String M_USER_LOGIN_PREF = "userLogin";
+    private final String M_USER_PASS_HASH = "userPassHash";
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
+
+        settingsUser = getSharedPreferences("userPref", MODE_PRIVATE);
+
+        if(!DoIneedEnterPassword()){
+            finish();
+        }
+
         setContentView(R.layout.login_layout);
+
+
+        mLoginInput = (EditText)findViewById(R.id.loginTextInput);
+        mPasswordInput = (EditText) findViewById(R.id.passwordTextInput);
+        mBtEntrance = (Button) findViewById(R.id.btEntrance);
+
+        mBtEntrance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VerificationUserData(mLoginInput.getText().toString(),
+                        mPasswordInput.getText().toString());
+            }
+        });
 
         CreateDefaultData();
     }
 
 
-    public void btLogin(View view){
-        Toast toast = Toast.makeText(getApplicationContext(),
-                getString(R.string.txtIncorrectLogin), Toast.LENGTH_SHORT);
-        toast.show();
+    private void VerificationUserData(String login, String password){
 
-        // Start next activity
-        Intent intent = new Intent(this, PropertyListActivity.class);
-        startActivity(intent);
-        finish();
+        User currentUser;
+
+        currentUser = UserStorage.get(this).
+                getUsetByNameAndPass(login, password);
+
+
+        if(currentUser != null){
+
+            // Set user preferences:
+            SharedPreferences.Editor prefEditor = settingsUser.edit();
+
+            prefEditor.putString(M_USER_LOGIN_PREF, login);
+            prefEditor.apply();
+
+            prefEditor.putString(M_USER_PASS_HASH, Integer.toString(password.hashCode()));
+            prefEditor.apply();
+
+            Intent intent = new Intent(this, PropertyListActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    getString(R.string.txtIncorrectLogin), Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+    private boolean DoIneedEnterPassword(){
+        String userLogin = settingsUser.getString(M_USER_LOGIN_PREF, "").toString();
+        String userPassHash = settingsUser.getString(M_USER_PASS_HASH, "").toString();
+
+        User currentUser;
+
+        currentUser = UserStorage.get(this).
+                getUserByNameAndHash(userLogin, userPassHash);
+
+
+        if(currentUser != null){
+            Intent intent = new Intent(this, PropertyListActivity.class);
+            startActivity(intent);
+            return false;
+        } else {
+            return  true;
+        }
     }
 
     private void CreateDefaultData(){
@@ -48,6 +117,7 @@ public class MainActivity extends Activity{
 
             User defUser = new User();
             defUser.setName(USER_NAME);
+//            defUser.setPasswordForDefUser(USER_PASSWORD);
             defUser.setPassword(USER_PASSWORD);
 
             UserStorage.get(getApplicationContext()).addUser(defUser);

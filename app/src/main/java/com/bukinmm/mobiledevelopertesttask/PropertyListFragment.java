@@ -2,6 +2,7 @@ package com.bukinmm.mobiledevelopertesttask;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -18,10 +19,13 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class PropertyListFragment extends Fragment{
 
     private RecyclerView mPropertRecyclerView;
     private PropertyAdapter mAdapter;
+    SharedPreferences settingsUser;
 
     private Button mBtLogout;
     private Button mBtInfo;
@@ -183,6 +187,15 @@ public class PropertyListFragment extends Fragment{
         Toast toast = Toast.makeText(getContext(),
                 "Выход из учетной записи", Toast.LENGTH_SHORT);
         toast.show();
+
+
+        // Clear user preferences:
+
+        settingsUser = getActivity().getSharedPreferences("userPref",MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = settingsUser.edit();
+        prefEditor.clear();
+        prefEditor.apply();
+
 
         // Start next activity
         Intent intent = new Intent(getActivity(), MainActivity.class);

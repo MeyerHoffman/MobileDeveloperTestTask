@@ -80,6 +80,48 @@ public class UserStorage {
         }
     }
 
+    public User getUsetByNameAndPass(String name, String password){
+        String mName = name;
+        String mPassHash = Integer.toString(password.hashCode());
+
+        DBCursorWrapper cursor = queryUsers(DBSchema.UsersTable.Cols.LOGIN +
+                " = ? AND " + DBSchema.UsersTable.Cols.PASSWORD +
+                " = ? ", new String[] { mName, mPassHash });
+
+        try{
+            if(cursor.getCount() == 0){
+                return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getUser();
+
+        } finally {
+            cursor.close();
+        }
+    }
+
+    public User getUserByNameAndHash(String name, String hash){
+        String mName = name;
+        String mPassHash = hash;
+
+        DBCursorWrapper cursor = queryUsers(DBSchema.UsersTable.Cols.LOGIN +
+                " = ? AND " + DBSchema.UsersTable.Cols.PASSWORD +
+                " = ? ", new String[] { mName, mPassHash });
+
+        try{
+            if(cursor.getCount() == 0){
+                return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getUser();
+
+        } finally {
+            cursor.close();
+        }
+
+    }
+
+
     private static ContentValues getContentValues(User user){
         ContentValues values = new ContentValues();
 
@@ -103,4 +145,5 @@ public class UserStorage {
 
         return new DBCursorWrapper(cursor);
     }
+
 }

@@ -38,7 +38,7 @@
             android:layout_height="40dp"
             android:layout_gravity="left"
             android:layout_marginLeft="10dp"
-            android:background="?android:attr/homeAsUpIndicator"
+            android:background="@mipmap/ic_arrow_back_white_48pt_3x"
             android:textAllCaps="false"
             android:textColor="@color/cardview_light_background"
             android:textSize="18sp"
