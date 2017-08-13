@@ -24,6 +24,7 @@ public class EditObjectActivity extends Activity{
     private EditText mFloorEditText;
 
     private Button mBtSaveNewProperty;
+    private Button mBtBack;
     private Boolean mAllValuesCorrect = true;
     private List<String> mIncorrectValueMsg = new ArrayList<>();
 
@@ -51,6 +52,7 @@ public class EditObjectActivity extends Activity{
         mFloorEditText.setText(Integer.toString(mProperty.getFloor()));
 
         mBtSaveNewProperty = (Button) findViewById(R.id.btSave);
+        mBtBack = (Button) findViewById(R.id.btBack);
 
         mBtSaveNewProperty.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,18 @@ public class EditObjectActivity extends Activity{
                 }
             }
         });
+
+        mBtBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void CheckFillingAllValues(){

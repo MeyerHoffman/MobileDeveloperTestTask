@@ -4,6 +4,7 @@ package com.bukinmm.mobiledevelopertesttask;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class PropertyFragment extends Fragment {
     private UUID mPropertyId;
 
     private Button mBtEdit;
+    private Button mBtBack;
 
     private static final String ARG_PROPERTY_ID = "property_id";
 
@@ -70,6 +72,7 @@ public class PropertyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_property, container, false);
 
         mBtEdit = (Button)view.findViewById(R.id.btEdit);
+        mBtBack = (Button) view.findViewById(R.id.btBack);
 
         mBtEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +80,15 @@ public class PropertyFragment extends Fragment {
                 onClickbtEdit(view);
             }
         });
+
+        mBtBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+
 
         mAddress = (TextView)view.findViewById(R.id.txtAddress);
         mArea = (TextView)view.findViewById(R.id.txtArea);
@@ -89,6 +101,7 @@ public class PropertyFragment extends Fragment {
 
         return view;
     }
+
 
     private void SetText(){
         mAddress.setText(mProperty.getAddress());
@@ -107,6 +120,7 @@ public class PropertyFragment extends Fragment {
         intent.putExtra(ARG_PROPERTY_ID, mProperty.getId().toString());
         startActivity(intent);
     }
+
 
     // HANDLERS. END
 

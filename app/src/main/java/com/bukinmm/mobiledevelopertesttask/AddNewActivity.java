@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class AddNewActivity extends Activity{
     private EditText mFloorEditText;
 
     private Button mBtSaveNewProperty;
+    private Button mBtBack;
     private Boolean mAllValuesCorrect = true;
     private List<String> mIncorrectValueMsg = new ArrayList<>();
 
@@ -37,6 +39,7 @@ public class AddNewActivity extends Activity{
         mFloorEditText = (EditText) findViewById(R.id.txtFlootInput);
 
         mBtSaveNewProperty = (Button) findViewById(R.id.btSave);
+        mBtBack = (Button) findViewById(R.id.btBack);
 
         mBtSaveNewProperty.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,12 +53,23 @@ public class AddNewActivity extends Activity{
                 } else {
 
                     ShowDialogErrorInputValues(v);
-
                     mAllValuesCorrect = true;
                 }
             }
         });
 
+        mBtBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void CheckFillingAllValues(){

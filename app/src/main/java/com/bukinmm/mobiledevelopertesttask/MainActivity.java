@@ -24,7 +24,7 @@ public class MainActivity extends Activity{
 
     public void btLogin(View view){
         Toast toast = Toast.makeText(getApplicationContext(),
-                R.string.txtIncorrectLogin, Toast.LENGTH_SHORT);
+                getString(R.string.txtIncorrectLogin), Toast.LENGTH_SHORT);
         toast.show();
 
         // Start next activity
