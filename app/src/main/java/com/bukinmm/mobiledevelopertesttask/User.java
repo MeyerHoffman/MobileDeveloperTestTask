@@ -31,7 +31,7 @@ public class User {
     public void setPassword(String userPassword){
         mPassword = Integer.toString(userPassword.hashCode());
     }
-    
+
     // SETTERS. END
 
     // GETTERS. START

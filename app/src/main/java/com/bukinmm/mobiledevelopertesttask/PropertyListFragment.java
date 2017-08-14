@@ -83,15 +83,6 @@ public class PropertyListFragment extends Fragment{
     }
 
 
-    private void updateInformation(){
-//        PropertyStorage propertyStorage = PropertyStorage.get(getActivity());
-//
-//
-//        AppCompatActivity activity = (AppCompatActivity) getActivity();
-
-        // TODO: метод не дописан
-    }
-
     private void  updateUI(){
         PropertyStorage propertyStorage = PropertyStorage.get(getActivity());
         List<Property> properties = propertyStorage.getProperties();
@@ -105,7 +96,6 @@ public class PropertyListFragment extends Fragment{
             mAdapter.notifyDataSetChanged();
         }
 
-        updateInformation();
     }
 
     private class PropertyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -176,18 +166,12 @@ public class PropertyListFragment extends Fragment{
     }
 
     // HANDLERS. START
-    // TODO: удалить вызов сообщения в методах
+
     public void btGetInfo(View view){
-        Toast toast = Toast.makeText(getContext(),
-                "Вызов справки", Toast.LENGTH_SHORT);
-        toast.show();
+
     }
 
     public void btLogout(View view){
-        Toast toast = Toast.makeText(getContext(),
-                "Выход из учетной записи", Toast.LENGTH_SHORT);
-        toast.show();
-
 
         // Clear user preferences:
 
@@ -204,9 +188,6 @@ public class PropertyListFragment extends Fragment{
     }
 
     public void btAddNew(View view){
-        Toast toast = Toast.makeText(getContext(),
-                "Вызов функции создания новой учетной записи", Toast.LENGTH_LONG);
-        toast.show();
 
         Intent intent = new Intent(getActivity(), AddNewActivity.class);
         startActivity(intent);

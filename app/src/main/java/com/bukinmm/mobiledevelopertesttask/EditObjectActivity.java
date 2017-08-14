@@ -62,7 +62,6 @@ public class EditObjectActivity extends Activity{
 
                 if(mAllValuesCorrect == true){
                     UpdateProperty();
-                    //TODO: обновить UI!!
 
                     finish();
                 } else {

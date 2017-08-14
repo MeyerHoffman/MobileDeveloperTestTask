@@ -88,8 +88,6 @@ public class PropertyFragment extends Fragment {
             }
         });
 
-
-
         mAddress = (TextView)view.findViewById(R.id.txtAddress);
         mArea = (TextView)view.findViewById(R.id.txtArea);
         mPrice = (TextView)view.findViewById(R.id.txtPrice);
