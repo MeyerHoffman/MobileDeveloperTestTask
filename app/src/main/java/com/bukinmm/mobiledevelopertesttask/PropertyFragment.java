@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.UUID;
 
 public class PropertyFragment extends Fragment {
@@ -102,12 +104,16 @@ public class PropertyFragment extends Fragment {
 
 
     private void SetText(){
+
+        NumberFormat numberFormat = new DecimalFormat("#,###,###");
+
         mAddress.setText(mProperty.getAddress());
         mArea.setText(Float.toString(mProperty.getArea()) + " " + this.getString(R.string.dimensionSquarelMeter));
-        mPrice.setText(Float.toString(mProperty.getPrice()) + " " + this.getString(R.string.dimensionThousandRub));
+        mPrice.setText(numberFormat.format(mProperty.getPrice()).toString() + " " + this.getString(R.string.dimensionThousandRub));
         mNumberOfRooms.setText(Integer.toString(mProperty.getNumberOfRooms()));
-        mPricePerSquarelMeter.setText(Float.toString(mProperty.getPricePerMeter()) + " " + this.getString(R.string.dimensionThousandRub));
+        mPricePerSquarelMeter.setText(numberFormat.format(mProperty.getPricePerMeter()).toString() + " " + this.getString(R.string.dimensionThousandRub));
         mFloor.setText(Integer.toString(mProperty.getFloor()));
+
     }
 
     // HANDLERS. START

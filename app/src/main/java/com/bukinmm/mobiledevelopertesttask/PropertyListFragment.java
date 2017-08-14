@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -117,10 +118,12 @@ public class PropertyListFragment extends Fragment{
 
         public void bindProperty(Property property){
 
+            NumberFormat numberFormat = new DecimalFormat("#,###,###");
+
             mProperty = property;
             mAddress.setText(mProperty.getAddress());
             mArea.setText(Float.toString(mProperty.getArea()) + " " + getString(R.string.dimensionSquarelMeter));
-            mPrice.setText(Float.toString(mProperty.getPrice()) + " " + getString(R.string.dimensionThousandRub));
+            mPrice.setText(numberFormat.format(mProperty.getPrice()).toString() + " " + getString(R.string.dimensionThousandRub));
 
         }
 
